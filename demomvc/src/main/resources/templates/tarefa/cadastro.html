@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Tarefas</title>
+
+    
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+
+<body class="container mt-4">
+
+    <div th:replace="fragments/alert"></div>
+
+    <form th:action="${tarefa.id == null} ? @{/tarefas/salvar} : @{/tarefas/editar}" 
+          th:object="${tarefa}" method="POST">
+
+        <div th:replace="fragments/validacao :: validacao"></div>
+
+        <input type="hidden" th:field="*{id}"/>
+
+        
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome da Tarefa</label>
+            <input type="text" class="form-control" id="nome" th:field="*{nome}">
+        </div>
+
+     
+        <div class="mb-3">
+            <label for="dataEntrega" class="form-label">Data de Entrega</label>
+            <input type="date" class="form-control" id="dataEntrega" th:field="*{dataEntrega}">
+        </div>
+
+        
+        <div class="mb-3">
+            <label for="responsavel" class="form-label">Responsável</label>
+            <input type="text" class="form-control" id="responsavel" th:field="*{responsavel}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+
+    <div class="mt-3">&copy; 2024 modelo estático</div>
+
+   
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
